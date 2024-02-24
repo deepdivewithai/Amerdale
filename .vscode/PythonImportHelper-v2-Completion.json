@@ -131,6 +131,39 @@
         "documentation": {}
     },
     {
+        "label": "forms",
+        "importPath": "django",
+        "description": "django",
+        "isExtraImport": true,
+        "detail": "django",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreationForm",
+        "importPath": "django.contrib.auth.forms",
+        "description": "django.contrib.auth.forms",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.forms",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "django.db",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db",
+        "description": "django.db",
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -144,6 +177,14 @@
         "description": "django.test",
         "isExtraImport": true,
         "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
         "documentation": {}
     },
     {
@@ -443,11 +484,20 @@
         "documentation": {}
     },
     {
+        "label": "CreateUserForm",
+        "kind": 6,
+        "importPath": "webapp.forms",
+        "description": "webapp.forms",
+        "peekOfCode": "class CreateUserForm(UserCreationForm):\n    class Meta:\n        model = User\n        fields = [\n            'username',\n            'password1',\n            'password2'\n        ]",
+        "detail": "webapp.forms",
+        "documentation": {}
+    },
+    {
         "label": "app_name",
         "kind": 5,
         "importPath": "webapp.urls",
         "description": "webapp.urls",
-        "peekOfCode": "app_name = 'webapp'\nurlpatterns = [\n    path('', views.landing_page, name='home')\n]",
+        "peekOfCode": "app_name = 'webapp'\nurlpatterns = [\n    path('', views.landing_page, name='home'),\n    path('register', views.create_user, name='register'),\n]",
         "detail": "webapp.urls",
         "documentation": {}
     },
@@ -456,7 +506,7 @@
         "kind": 5,
         "importPath": "webapp.urls",
         "description": "webapp.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', views.landing_page, name='home')\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', views.landing_page, name='home'),\n    path('register', views.create_user, name='register'),\n]",
         "detail": "webapp.urls",
         "documentation": {}
     },
@@ -465,7 +515,16 @@
         "kind": 2,
         "importPath": "webapp.views",
         "description": "webapp.views",
-        "peekOfCode": "def landing_page(request):\n    return render(request, 'webapp/index.html')",
+        "peekOfCode": "def landing_page(request):\n    return render(request, 'webapp/index.html')\ndef create_user(request):\n    form = forms.CreateUserForm()\n    if request.method == 'POST':\n        form = forms.CreateUserForm(request.POST)\n        if form.is_valid():\n            form.save()\n            return redirect('webapp:home')\n    context = {",
+        "detail": "webapp.views",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "kind": 2,
+        "importPath": "webapp.views",
+        "description": "webapp.views",
+        "peekOfCode": "def create_user(request):\n    form = forms.CreateUserForm()\n    if request.method == 'POST':\n        form = forms.CreateUserForm(request.POST)\n        if form.is_valid():\n            form.save()\n            return redirect('webapp:home')\n    context = {\n        'form': form\n    }",
         "detail": "webapp.views",
         "documentation": {}
     },
