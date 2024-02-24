@@ -2,6 +2,20 @@
 
 {% block content %}
 
-<h1>Hello World!!!</h1>
-  
+{% load static %}
+
+<div class="text-center p-5">
+    <h1>Welcome to world of Amerdale</h1>
+    <hr>
+</div>
+
+<div class="card" style="width: 18rem;">
+    <img src="{% static 'images/alone.webp' %}" class="card-img-top" alt="Alone">
+
+    <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+    </div>
+</div>
+
 {% endblock content %}
